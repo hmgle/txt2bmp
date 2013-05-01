@@ -1,0 +1,6 @@
+*.o
+*.d
+*.bmp
+*.bak
+*.tmp
+txt2bmp
