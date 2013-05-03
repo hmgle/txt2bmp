@@ -12,8 +12,9 @@
 #include "debug_log.h"
 
 #define CHAR_HEIGHT	16
-#define GB2312_HZK	"gb2312.hzk"
-#define ASCII_HZK	"ASC16"
+#define GB2312		"/usr/local/share/txt2bmp/GB2312"
+#define GB2312_HZK	"/usr/local/share/txt2bmp/gb2312.hzk"
+#define ASCII_HZK	"/usr/local/share/txt2bmp/ASC16"
 #define FONT_BMP_SIZE	1024
 
 struct text_style {
@@ -126,10 +127,18 @@ int main(int argc, char **argv)
 		encoding_type = detect_file_encoding(in);
 	}
 
-	mem_addr = mem_gb2312("./GB2312", &gb2312_num);
-
+	mem_addr = mem_gb2312(GB2312, &gb2312_num);
+	if (!mem_addr)
+		mem_addr = mem_gb2312("./GB2312", &gb2312_num);
+	if (!mem_addr) {
+		debug_print("mem_gb2312 failed");
+		exit(1);
+	}
 	font_fd = open(GB2312_HZK, O_RDONLY);
+	if (font_fd < 0)
+		font_fd = open("./gb2312.hzk", O_RDONLY);
 	if (font_fd < 0) {
+		debug_print("open failed");
 		perror("open");
 		exit(1);
 	}
@@ -146,7 +155,10 @@ int main(int argc, char **argv)
 	}
 
 	ascii_fd = open(ASCII_HZK, O_RDONLY);
+	if (ascii_fd < 0)
+		ascii_fd = open("./ASC16", O_RDONLY);
 	if (ascii_fd < 0) {
+		debug_print("open failed");
 		perror("open");
 		exit(1);
 	}

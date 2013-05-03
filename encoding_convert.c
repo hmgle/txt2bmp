@@ -164,10 +164,8 @@ mem_gb2312(const char *gb2312filename, int *gb2312_num)
 	int i;
 
 	gb2312_fp = fopen(gb2312filename, "r");
-	if (gb2312_fp == NULL) {
-		perror("fopen");
-		exit(1);
-	}
+	if (gb2312_fp == NULL)
+		return NULL;
 	ptrmem = malloc(GB2312_MEM_SIZE);
 	if (!ptrmem) {
 		perror("malloc");
