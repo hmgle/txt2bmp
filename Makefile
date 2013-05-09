@@ -10,6 +10,12 @@ INSTALL = install -D
 INSTALL_PROGRAM = $(INSTALL)
 INSTALL_DATA = $(INSTALL) -m 644
 
+SRCDIR = .
+SRC := $(wildcard $(SRCDIR)/*.c)
+ODIR := .
+OBJ  := $(patsubst %.c,$(ODIR)/%.o,$(SRC))
+
+
 ifeq ($(DEBUG), 1)
 	CFLAGS += -Wextra -DDEBUG=1
 else
@@ -40,3 +46,11 @@ uninstall:
 
 clean:
 	-rm -f *.o $(TARGET)
+
+sinclude $(SRC:.c=.d)
+
+%.d: %.c
+	@set -e; rm -f $@; \
+		$(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
+		sed 's,\(.*\)\.o[:]*,\1.o $@:,' < $@.$$$$ > $@; \
+		rm -f $@.$$$$
