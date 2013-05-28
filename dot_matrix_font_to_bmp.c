@@ -394,9 +394,6 @@ bmp_v_combin_3(bmp_file_t *dst, const bmp_file_t *add, uint32_t blank_color)
 		memcpy(dst->pdata, add->pdata, add->dib_h.image_size);
 		return dst;
 	} 
-	/*
-	 * else 
-	 */
 	if (dst->dib_h.width > add->dib_h.width) {
 		w_diff = dst->dib_h.width - add->dib_h.width;
 
