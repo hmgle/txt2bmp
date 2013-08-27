@@ -186,7 +186,7 @@ int main(int argc, char **argv)
 	if (encoding_type == UTF8_WITH_BOM) {
 		if (fseek(in, 3, SEEK_SET)) {
 			debug_print("fseek failed: %s", strerror(errno));
-			exit(errno);
+			exit(1);
 		}
 	}
 	for(;;) {
