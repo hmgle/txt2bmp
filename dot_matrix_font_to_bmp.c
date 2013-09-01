@@ -115,14 +115,14 @@ fontdata2bmp(const uint8_t *ptrfontdata,
 #else
 	for (i = height - 1; i >= 0; i--) /* 正立的位图 */
 #endif
-	{
-		conv_row(ptrfontdata + (width + 7) / 8 * i, 
-			 width, 
-			 ptrbmpdata,
-			 bits_per_pix,
-			 pcolor);
-		ptrbmpdata += rowsize;
-	}
+		{
+			conv_row(ptrfontdata + (width + 7) / 8 * i, 
+				 width, 
+				 ptrbmpdata,
+				 bits_per_pix,
+				 pcolor);
+			ptrbmpdata += rowsize;
+		}
 }
 
 uint32_t 
