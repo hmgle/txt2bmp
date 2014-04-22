@@ -41,28 +41,19 @@ output_bmp(FILE *fp, bmp_file_t *ptrbmp)
 {
 	int ret;
 
-	ret = fwrite(&ptrbmp->bmp_h, 
-		     sizeof(struct bmp_file_header),
-		     1,
-		     fp);
+	ret = fwrite(&ptrbmp->bmp_h, sizeof(struct bmp_file_header), 1, fp);
 	if (ret < 0) {
 		debug_print("fwrite fail");
 		return -1;
 	}
 
-	ret = fwrite(&ptrbmp->dib_h, 
-		     sizeof(struct dib_header),
-		     1,
-		     fp);
+	ret = fwrite(&ptrbmp->dib_h, sizeof(struct dib_header), 1, fp);
 	if (ret < 0) {
 		debug_print("fwrite fail");
 		return -1;
 	}
 
-	ret = fwrite(ptrbmp->pdata, 
-		     1, 
-		     ptrbmp->dib_h.image_size, 
-		     fp);
+	ret = fwrite(ptrbmp->pdata, 1, ptrbmp->dib_h.image_size, fp);
 	if (ret < 0) {
 		debug_print("fwrite fail");
 		return -1;
