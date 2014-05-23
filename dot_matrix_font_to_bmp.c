@@ -236,10 +236,6 @@ bmp_file_t *
 bmp_v_combin(const bmp_file_t *src1, const bmp_file_t *src2, bmp_file_t *dst)
 {
 	uint32_t rowsize;
-	uint32_t rowsize_src1;
-	uint32_t rowsize_src2;
-	uint32_t row_length_src1;
-	uint32_t row_length_src2;
 	uint8_t *ptrbmpdata;
 
 	memset(&dst->bmp_h, 0, sizeof(struct bmp_file_header));
@@ -262,13 +258,6 @@ bmp_v_combin(const bmp_file_t *src1, const bmp_file_t *src2, bmp_file_t *dst)
 	dst->dib_h.colors_in_colortable = 0;
 	dst->dib_h.important_color_count = 0;
 	dst->bmp_h.file_size = dst->bmp_h.offset + dst->dib_h.image_size;
-
-	rowsize_src1 = (src1->dib_h.bits_per_pix * src1->dib_h.width +
-			31) / 32 * 4;
-	rowsize_src2 = (src2->dib_h.bits_per_pix * src2->dib_h.width +
-			31) / 32 * 4;
-	row_length_src1 = src1->dib_h.width * (src1->dib_h.bits_per_pix / 8);
-	row_length_src2 = src2->dib_h.width * (src1->dib_h.bits_per_pix / 8);
 
 	ptrbmpdata = dst->pdata;
 
