@@ -4,17 +4,23 @@
 
 ## Building txt2bmp
 
-    make
+```bash
+$ make
+```
 
 To install:
 
-    make install
+```bash
+$ make install
+```
 
 ## Usage:
 
 Displays help:
 
-    ./txt2bmp -h
+```bash
+$ ./txt2bmp -h
+```
 
 
 > Usage: ./txt2bmp [Options] [inputfile]    
@@ -33,15 +39,16 @@ Displays help:
 
 ## Example
 
-	echo "hello, world" | ./txt2bmp > hello.bmp
+```bash
+$ echo "hello, world" | ./txt2bmp > hello.bmp
 
-	./txt2bmp -l 32 -r 32 -u 48 -d 32 -i 4 -m 38 \
-		-g 0xa85f README.md > README.bmp
+$ ./txt2bmp -l 32 -r 32 -u 48 -d 32 -i 4 -m 38 \
+	-g 0xa85f README.md > README.bmp
+```
 
 
 ## License
 
 See [LICENSE.md](LICENSE.md).
-
 
 
