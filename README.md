@@ -18,24 +18,22 @@ $ make install
 
 Displays help:
 
-```bash
+```console
 $ ./txt2bmp -h
+Usage: ./txt2bmp [Options] [inputfile]    
+
+Options:    
+        -l val        set left margin    
+        -r val        set right margin    
+        -u val        set top margin    
+        -d val        set bottom margin    
+        -i val        set line spacing    
+        -c val        set character spacing    
+        -m val        set max line length    
+        -b val        set bits_per_pix    
+        -g val        set background color    
+        -f val        set foreground color   
 ```
-
-
-> Usage: ./txt2bmp [Options] [inputfile]    
-> 
-> Options:    
->         -l val        set left margin    
->         -r val        set right margin    
->         -u val        set top margin    
->         -d val        set bottom margin    
->         -i val        set line spacing    
->         -c val        set character spacing    
->         -m val        set max line length    
->         -b val        set bits_per_pix    
->         -g val        set background color    
->         -f val        set foreground color   
 
 ## Example
 
