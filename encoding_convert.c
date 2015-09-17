@@ -62,7 +62,7 @@ utf8tounicode(const uint8_t *src, uint8_t *dst)
 char *
 fgets_utf8(char *s, int n, FILE *stream)
 {
-	int c;
+	int c = EOF;
 	int length;
 	char *cs = s;
 	int fix_n = 2 * n - 2;
